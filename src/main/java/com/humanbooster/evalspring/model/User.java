@@ -30,13 +30,15 @@ public class User {
     @Column(name = "username")
     String username;
 
-    @OneToMany(mappedBy = "user",
+    @OneToMany(targetEntity= Project.class,
+                mappedBy = "creator",
                cascade = CascadeType.ALL,
                orphanRemoval = true)
     @Column(name = "projects")
     List<Project> projectsList;
 
-    @OneToMany(mappedBy = "user",
+    @OneToMany(targetEntity= Task.class,
+               mappedBy = "assignee",
                cascade = CascadeType.ALL,
                orphanRemoval = true)
     @Column(name = "tasks")
