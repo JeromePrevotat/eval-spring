@@ -27,43 +27,12 @@ services:
         volumes:
             - mysql_data:/var/lib/mysql
 
-    mysql-test:
-        image: mysql:8.3
-        container_name: mysql-test
-        healthcheck:
-            test:
-                [
-                    "CMD",
-                    "mysqladmin",
-                    "ping",
-                    "-h",
-                    "localhost",
-                    "-u",
-                    "user",
-                    "-ppassword",
-                ]
-            interval: 10s
-            timeout: 5s
-            retries: 10
-
-        environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: db-test
-            MYSQL_USER: user
-            MYSQL_PASSWORD: password
-        ports:
-            - "3307:3306"
-        volumes:
-            - mysql-test_data:/var/lib/mysql
-
     app:
         build: ./
         container_name: app
         depends_on:
             mysql:
                 condition: service_healthy # Wait for db to be healthy
-            mysql-test:
-                condition: service_healthy # Wait for the test db to be healthy
         restart: on-failure
         healthcheck:
             test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
@@ -82,4 +51,3 @@ services:
 
 volumes:
     mysql_data:
-    mysql-test_data:
