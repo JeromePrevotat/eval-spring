@@ -35,14 +35,12 @@ public class User {
     @JsonManagedReference("projects-users")
     @OneToMany(targetEntity= Project.class,
                 mappedBy = "creator",
-               cascade = CascadeType.ALL,
-               orphanRemoval = true)
+               cascade = CascadeType.ALL)
     List<Project> projectsList;
 
     @JsonManagedReference("tasks-users")
     @OneToMany(targetEntity= Task.class,
                mappedBy = "assignee",
-               cascade = CascadeType.ALL,
-               orphanRemoval = true)
+               cascade = CascadeType.ALL)
     List<Task> tasksList;
 }

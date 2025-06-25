@@ -1,0 +1,48 @@
+###################################################
+# CREATE PROJECT                                  # 
+###################################################
+
+POST http://localhost:8080/api/projects
+Content-Type: application/json
+
+{
+    "name": "E-commerce Platform",
+    "creatorId": 1
+}
+
+###################################################
+# CREATE PROJECT                                  #
+###################################################
+POST http://localhost:8080/api/projects
+Content-Type: application/json
+
+{
+    "name": "Mobile App Development",
+    "creatorId": 3
+}
+
+###################################################
+# GET ALL PROJECTS                                #
+###################################################
+GET http://localhost:8080/api/projects
+
+###################################################
+# GET PROJECT BY ID                               #
+###################################################
+GET http://localhost:8080/api/projects/1
+
+###################################################
+# GET PROJECT NOT FOUND (404)                     #
+###################################################
+GET http://localhost:8080/api/projects/999
+
+###################################################
+# UPDATE PROJECT                                  #
+###################################################
+PUT http://localhost:8080/api/projects/1
+Content-Type: application/json
+
+{
+    "name": "E-commerce Platform v2.0",
+    "creatorId": 1
+}

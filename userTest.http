@@ -38,3 +38,8 @@ Content-Type: application/json
 # DELETE USER                                     #
 ###################################################
 DELETE http://localhost:8080/api/users/2
+###
+###################################################
+# DELETE USER INVALID ID                          #
+###################################################
+DELETE http://localhost:8080/api/users/999

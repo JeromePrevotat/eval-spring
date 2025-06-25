@@ -38,14 +38,13 @@ public class Project {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "creator_id", nullable = false)
+    @JoinColumn(name = "creator", nullable = false)
     @JsonBackReference("projects-users")
     User creator;
 
     @JsonManagedReference("projects-tasks")
     @OneToMany(targetEntity = Task.class,
                mappedBy = "project",
-               cascade = CascadeType.ALL,
-               orphanRemoval = true)
+               cascade = CascadeType.ALL)
     List<Task> tasksList;
 }

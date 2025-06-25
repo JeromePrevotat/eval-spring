@@ -1,0 +1,76 @@
+###################################################
+# CREATE TASK 1 - TODO                           #
+###################################################
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{
+    "title": "Implement user authentication",
+    "status": "TODO",
+    "projectId": 1,
+    "assigneeId": 1
+}
+
+###################################################
+# CREATE TASK 2 - IN_PROGRESS                    #
+###################################################
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{
+    "title": "Design product catalog",
+    "status": "IN_PROGRESS", 
+    "projectId": 1,
+    "assigneeId": 3
+}
+
+###################################################
+# CREATE TASK 3 - DONE                           #
+###################################################
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{
+    "title": "Create mobile UI mockups",
+    "status": "DONE",
+    "projectId": 2,
+    "assigneeId": 1
+}
+
+###################################################
+# GET ALL TASKS                                   #
+###################################################
+GET http://localhost:8080/api/tasks
+
+###################################################
+# GET TASK BY ID                                  #
+###################################################
+GET http://localhost:8080/api/tasks/1
+
+###################################################
+# GET TASK BY ID INVALID                          #
+###################################################
+GET http://localhost:8080/api/tasks/999
+
+###################################################
+# UPDATE TASK                                     #
+###################################################
+PUT http://localhost:8080/api/tasks/1
+Content-Type: application/json
+
+{
+    "title": "Implement user authentication and authorization",
+    "status": "IN_PROGRESS",
+    "projectId": 1,
+    "assigneeId": 1
+}
+
+###################################################
+# DELETE TASK                                     #
+###################################################
+DELETE http://localhost:8080/api/tasks/3
+
+###################################################
+# DELETE TASK - NOT FOUND (404)                  #
+###################################################
+DELETE http://localhost:8080/api/tasks/999
