@@ -2,6 +2,8 @@ package com.humanbooster.evalspring.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,11 +11,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
@@ -30,12 +32,14 @@ public class User {
     @Column(name = "username")
     String username;
 
+    @JsonManagedReference("projects-users")
     @OneToMany(targetEntity= Project.class,
                 mappedBy = "creator",
                cascade = CascadeType.ALL,
                orphanRemoval = true)
     List<Project> projectsList;
 
+    @JsonManagedReference("tasks-users")
     @OneToMany(targetEntity= Task.class,
                mappedBy = "assignee",
                cascade = CascadeType.ALL,

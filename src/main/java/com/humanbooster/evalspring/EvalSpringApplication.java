@@ -7,7 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EvalSpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EvalSpringApplication.class, args);
+		try {
+			System.out.println("===== STARTING APP =====\n");
+			SpringApplication.run(EvalSpringApplication.class, args);
+			System.out.println("===== APP RUNNING =====\n");
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 }

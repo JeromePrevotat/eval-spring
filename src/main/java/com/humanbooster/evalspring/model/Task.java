@@ -1,5 +1,7 @@
 package com.humanbooster.evalspring.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,10 +36,12 @@ public class Task {
 
     @NotNull
     @ManyToOne
+    @JsonBackReference("projects-tasks")
     @JoinColumn(name = "project", nullable = false)
     Project project;
 
     @ManyToOne
+    @JsonBackReference("tasks-users")
     @JoinColumn(name = "assignee", nullable = false)
     User assignee;
 }

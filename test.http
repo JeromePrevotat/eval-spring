@@ -1,0 +1,32 @@
+
+###
+###################################################
+# CREATE PROJECT                                  #
+###################################################
+POST http://localhost:8080/api/projects
+Content-Type: application/json
+
+{
+    "name": "E-commerce Platform",
+    "creator": {
+        "id": 1
+    }
+}
+
+###
+###################################################
+# CREATE TASK                                     #
+###################################################
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{
+    "title": "Implement user authentication",
+    "status": "TODO",
+    "project": {
+        "id": 1
+    },
+    "assignee": {
+        "id": 1
+    }
+}
