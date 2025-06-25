@@ -1,10 +1,10 @@
-package com.humanbooster.evalspring.mapper;
+package com.humanbooster.evalspring.mapper.user;
 
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Component;
 
-import com.humanbooster.evalspring.dto.UserDTO;
+import com.humanbooster.evalspring.dto.user.UserDTO;
 import com.humanbooster.evalspring.model.Project;
 import com.humanbooster.evalspring.model.Task;
 import com.humanbooster.evalspring.model.User;

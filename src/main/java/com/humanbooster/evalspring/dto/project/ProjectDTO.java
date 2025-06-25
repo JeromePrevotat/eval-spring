@@ -1,4 +1,4 @@
-package com.humanbooster.evalspring.dto;
+package com.humanbooster.evalspring.dto.project;
 
 import java.util.List;
 

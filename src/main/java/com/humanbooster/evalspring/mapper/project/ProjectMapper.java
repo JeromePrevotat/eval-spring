@@ -1,4 +1,4 @@
-package com.humanbooster.evalspring.mapper;
+package com.humanbooster.evalspring.mapper.project;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -6,9 +6,11 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.humanbooster.evalspring.dto.ProjectDTO;
+import com.humanbooster.evalspring.dto.project.ProjectDTO;
+import com.humanbooster.evalspring.dto.project.ProjectDTOShort;
 import com.humanbooster.evalspring.model.Project;
 import com.humanbooster.evalspring.model.Task;
+import com.humanbooster.evalspring.model.User;
 import com.humanbooster.evalspring.repository.TaskRepository;
 import com.humanbooster.evalspring.repository.UserRepository;
 
@@ -25,15 +27,35 @@ public class ProjectMapper {
         ProjectDTO projectDTO = new ProjectDTO();
         projectDTO.setId(project.getId());
         projectDTO.setName(project.getName());
-        projectDTO.setCreatorId(project.getCreator() != null ? 
-                                project.getCreator().getId() 
-                                : null);
+        User creator = project.getCreator();
+        projectDTO.setCreatorId(creator != null ? creator.getId() : null);
         projectDTO.setTasksListIds(project.getTasksList() != null ?
+                                    project.getTasksList().stream()
+                                        .map(Task::getId)
+                                        .collect(Collectors.toList())
+                                    : new ArrayList<>());
+        return projectDTO;
+    }
+
+    public ProjectDTOShort toDTOShort(Project project) {
+        if (project == null) return null;
+        ProjectDTOShort projectDTOShort = new ProjectDTOShort();
+        projectDTOShort.setId(project.getId());
+        projectDTOShort.setName(project.getName());
+        User creator = project.getCreator();
+        projectDTOShort.setCreatorId(creator != null ? creator.getId() : null);
+        projectDTOShort.setCreatorUsername(creator != null ? creator.getUsername() : null);
+        projectDTOShort.setTasksListIds(project.getTasksList() != null ?
+                                    project.getTasksList().stream()
+                                        .map(Task::getId)
+                                        .collect(Collectors.toList())
+                                    : new ArrayList<>());
+        projectDTOShort.setTasksListNames(project.getTasksList() != null ?
                                      project.getTasksList().stream()
-                                             .map(Task::getId)
+                                             .map(Task::getTitle)
                                              .collect(Collectors.toList())
                                      : new ArrayList<>());
-        return projectDTO;
+        return projectDTOShort;
     }
 
     public Project toEntity(ProjectDTO projectDTO) {

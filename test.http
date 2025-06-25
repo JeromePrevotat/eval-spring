@@ -1,21 +1,27 @@
+###################################################
+# CREATE USER                                     #
+###################################################
+POST http://localhost:8080/api/users
+Content-Type: application/json
 
-###
+{
+    "username": "john_doe"
+}
+
 ###################################################
-# CREATE PROJECT                                  #
+# CREATE PROJECT                                  # 
 ###################################################
+
 POST http://localhost:8080/api/projects
 Content-Type: application/json
 
 {
     "name": "E-commerce Platform",
-    "creator": {
-        "id": 1
-    }
+    "creatorId": 1
 }
 
-###
 ###################################################
-# CREATE TASK                                     #
+# CREATE TASK 1 - TODO                           #
 ###################################################
 POST http://localhost:8080/api/tasks
 Content-Type: application/json
@@ -23,10 +29,24 @@ Content-Type: application/json
 {
     "title": "Implement user authentication",
     "status": "TODO",
-    "project": {
-        "id": 1
-    },
-    "assignee": {
-        "id": 1
-    }
+    "projectId": 1,
+    "assigneeId": 1
 }
+
+###################################################
+# CREATE TASK 2 - IN_PROGRESS                    #
+###################################################
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{
+    "title": "Design product catalog",
+    "status": "IN_PROGRESS", 
+    "projectId": 1,
+    "assigneeId": 1
+}
+
+###################################################
+# GET PROJECT BY ID                               #
+###################################################
+GET http://localhost:8080/api/projects/1

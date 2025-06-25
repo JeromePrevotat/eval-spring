@@ -1,8 +1,8 @@
-package com.humanbooster.evalspring.mapper;
+package com.humanbooster.evalspring.mapper.task;
 
 import org.springframework.stereotype.Component;
 
-import com.humanbooster.evalspring.dto.TaskDTO;
+import com.humanbooster.evalspring.dto.task.TaskDTO;
 import com.humanbooster.evalspring.model.Task;
 import com.humanbooster.evalspring.repository.ProjectRepository;
 import com.humanbooster.evalspring.repository.UserRepository;

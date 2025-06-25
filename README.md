@@ -1,5 +1,20 @@
 # eval-spring
 
+## Architecture
+
+-   Java Springboot Mysql Docker
+
+## How to use
+
+### Start the application
+
+-   docker compose up --build -d
+
+### Access the Database
+
+-   docker exec -it mysql bash
+-   mysql -p (password = root)
+
 ## Fonctionnalités attendues
 
 ## Utilisateur
@@ -16,6 +31,6 @@
 
 ## Tâche
 
--   `POST /tasks` → Créer une tâche (avec ID du projet et de l’utilisateur assigné) → TO DO
--   `PATCH /tasks/{id}` → Modifier le statut (Enum : `TODO`, `IN_PROGRESS`, `DONE`) → TO DO
+-   `POST /tasks` → Créer une tâche (avec ID du projet et de l’utilisateur assigné) → DONE
+-   `PATCH /tasks/{id}` → Modifier le statut (Enum : `TODO`, `IN_PROGRESS`, `DONE`) → DONE
 -   `GET /projects/{id}/tasks` → Lister les tâches d’un projet → TO DO

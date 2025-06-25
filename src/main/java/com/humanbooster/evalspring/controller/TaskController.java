@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.humanbooster.evalspring.dto.TaskDTO;
-import com.humanbooster.evalspring.mapper.TaskMapper;
+import com.humanbooster.evalspring.dto.task.TaskDTO;
+import com.humanbooster.evalspring.mapper.task.TaskMapper;
 import com.humanbooster.evalspring.model.Task;
 import com.humanbooster.evalspring.service.TaskService;
 

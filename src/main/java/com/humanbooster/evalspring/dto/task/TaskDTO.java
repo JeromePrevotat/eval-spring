@@ -1,4 +1,4 @@
-package com.humanbooster.evalspring.dto;
+package com.humanbooster.evalspring.dto.task;
 
 import com.humanbooster.evalspring.model.TaskStatus;
 

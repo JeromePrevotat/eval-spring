@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.humanbooster.evalspring.dto.ProjectDTO;
-import com.humanbooster.evalspring.mapper.ProjectMapper;
+import com.humanbooster.evalspring.dto.project.ProjectDTO;
+import com.humanbooster.evalspring.dto.project.ProjectDTOShort;
+import com.humanbooster.evalspring.mapper.project.ProjectMapper;
 import com.humanbooster.evalspring.model.Project;
 import com.humanbooster.evalspring.service.ProjectService;
 
@@ -38,9 +39,9 @@ public class ProjectController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProjectDTO> getProjectById(@PathVariable Long id) {
+    public ResponseEntity<ProjectDTOShort> getProjectById(@PathVariable Long id) {
         return projectService.getProjectById(id)
-                .map(projectMapper::toDTO)
+                .map(projectMapper::toDTOShort)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
