@@ -53,5 +53,4 @@ public class UserService {
     public boolean existsById(Long id) {
         return userRepository.existsById(id);
     }
-
 }
