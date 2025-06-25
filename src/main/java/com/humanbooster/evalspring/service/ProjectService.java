@@ -2,10 +2,13 @@ package com.humanbooster.evalspring.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.humanbooster.evalspring.dto.task.TaskDTO;
+import com.humanbooster.evalspring.mapper.task.TaskMapper;
 import com.humanbooster.evalspring.model.Project;
 import com.humanbooster.evalspring.repository.ProjectRepository;
 import com.humanbooster.evalspring.utils.ModelUtil;
@@ -17,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class ProjectService {
     private final ProjectRepository projectRepository;
+    private final TaskMapper taskMapper;
 
     @Transactional
     public Project saveProject(Project project) {
@@ -52,5 +56,14 @@ public class ProjectService {
     @Transactional(readOnly = true)
     public boolean existsById(Long id) {
         return projectRepository.existsById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<List<TaskDTO>> getProjectTasks(Long projectId) {
+        return projectRepository.findById(projectId)
+            .map(project -> project.getTasksList()
+                                  .stream()
+                                  .map(taskMapper::toDTO)
+                                  .collect(Collectors.toList()));
     }
 }

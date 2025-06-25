@@ -50,41 +50,31 @@ Content-Type: application/json
 }
 
 ###################################################
-# GET PROJECT BY ID                               #
+# UPDATE TASK                                     #
 ###################################################
-GET http://localhost:8080/api/projects/1
+PUT http://localhost:8080/api/tasks/1
+Content-Type: application/json
 
+{
+    "title": "Implement user authentication and authorization",
+    "status": "IN_PROGRESS",
+    "projectId": 1,
+    "assigneeId": 1
+}
 ###################################################
 # GET USER PROJECTS                               #
 ###################################################
 GET http://localhost:8080/api/users/1/projects
-
-
-
-
+###################################################
+# GET USER TASKS                                  #
+###################################################
+GET http://localhost:8080/api/users/1/tasks
 
 ###################################################
-POST http://localhost:8080/api/users
-Content-Type: application/json
-
-{
-    "username": "jane_smith"
-}
+# GET PROJECT BY ID                               #
 ###################################################
-POST http://localhost:8080/api/projects
-Content-Type: application/json
-
-{
-    "name": "Boring Project",
-    "creatorId": 2
-}
+GET http://localhost:8080/api/projects/1
 ###################################################
-POST http://localhost:8080/api/tasks
-Content-Type: application/json
-
-{
-    "title": "Even more boring Task",
-    "status": "IN_PROGRESS", 
-    "projectId": 2,
-    "assigneeId": 1
-}
+# GET PROJECT TASKS                               #
+###################################################
+GET http://localhost:8080/api/projects/1/tasks

@@ -21,8 +21,10 @@
 
 -   `POST /users` → Créer un utilisateur → DONE
 -   `GET /users/{id}` → Afficher un utilisateur → DONE
--   `GET /users/{id}/projects` → Projets créés par l’utilisateur → TO DO
--   `GET /users/{id}/tasks` → Tâches assignées à l’utilisateur → TO DO
+-   `GET /users/{id}/projects` → Projets créés par l’utilisateur
+    → DONE by using a minimalist DTO
+-   `GET /users/{id}/tasks` → Tâches assignées à l’utilisateur
+    → DONE by using the TaskDTO
 
 ## Projet
 
@@ -34,4 +36,5 @@
 
 -   `POST /tasks` → Créer une tâche (avec ID du projet et de l’utilisateur assigné) → DONE
 -   `PATCH /tasks/{id}` → Modifier le statut (Enum : `TODO`, `IN_PROGRESS`, `DONE`) → DONE
--   `GET /projects/{id}/tasks` → Lister les tâches d’un projet → TO DO
+-   `GET /projects/{id}/tasks` → Lister les tâches d’un projet
+    → DONE by using TaskDTO

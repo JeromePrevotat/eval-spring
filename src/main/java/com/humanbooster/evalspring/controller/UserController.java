@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.humanbooster.evalspring.dto.project.ProjectDTO;
+import com.humanbooster.evalspring.dto.task.TaskDTO;
 import com.humanbooster.evalspring.dto.user.UserDTO;
 import com.humanbooster.evalspring.mapper.user.UserMapper;
 import com.humanbooster.evalspring.model.User;
@@ -46,11 +48,20 @@ public class UserController {
     }
 
     @GetMapping("/{id}/projects")
-    public ResponseEntity<List<String>> getUserProjects(@PathVariable Long id) {
+    public ResponseEntity<List<ProjectDTO>> getUserProjects(@PathVariable Long id) {
         return userService.getUserProjects(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+    
+    @GetMapping("/{id}/tasks")
+    public ResponseEntity<List<TaskDTO>> getUserTasks(@PathVariable Long id) {
+        return userService.getUserTasks(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
 
     @PostMapping
     public ResponseEntity<UserDTO> saveUser(@Valid @RequestBody UserDTO userDTO) {

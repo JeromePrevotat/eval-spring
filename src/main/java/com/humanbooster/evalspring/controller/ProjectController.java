@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.humanbooster.evalspring.dto.project.ProjectDTO;
 import com.humanbooster.evalspring.dto.project.ProjectDTOShort;
+import com.humanbooster.evalspring.dto.task.TaskDTO;
 import com.humanbooster.evalspring.mapper.project.ProjectMapper;
 import com.humanbooster.evalspring.model.Project;
 import com.humanbooster.evalspring.service.ProjectService;
@@ -42,6 +43,13 @@ public class ProjectController {
     public ResponseEntity<ProjectDTOShort> getProjectById(@PathVariable Long id) {
         return projectService.getProjectById(id)
                 .map(projectMapper::toDTOShort)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/{id}/tasks")
+    public ResponseEntity<List<TaskDTO>> getProjectTasks(@PathVariable Long id) {
+        return projectService.getProjectTasks(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
