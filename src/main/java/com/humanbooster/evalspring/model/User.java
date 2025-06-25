@@ -34,13 +34,11 @@ public class User {
                 mappedBy = "creator",
                cascade = CascadeType.ALL,
                orphanRemoval = true)
-    @Column(name = "projects")
     List<Project> projectsList;
 
     @OneToMany(targetEntity= Task.class,
                mappedBy = "assignee",
                cascade = CascadeType.ALL,
                orphanRemoval = true)
-    @Column(name = "tasks")
     List<Task> tasksList;
 }
