@@ -27,7 +27,8 @@
 ## Projet
 
 -   `POST /projects` → Créer un projet (avec ID du créateur) → DONE
--   `GET /projects/{id}` → Détails d’un projet avec ses tâches → TO DO
+-   `GET /projects/{id}` → Détails d’un projet avec ses tâches
+    → DONE by using a specific DTO containing more attributes
 
 ## Tâche
 

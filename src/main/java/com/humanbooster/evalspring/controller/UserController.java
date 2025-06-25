@@ -45,6 +45,13 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{id}/projects")
+    public ResponseEntity<List<String>> getUserProjects(@PathVariable Long id) {
+        return userService.getUserProjects(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public ResponseEntity<UserDTO> saveUser(@Valid @RequestBody UserDTO userDTO) {
         User newUser = userMapper.toEntity(userDTO);
